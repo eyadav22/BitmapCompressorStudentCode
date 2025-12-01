@@ -1,9 +1,9 @@
-Name: YOUR NAME HERE
+Name: Eisha Yadav
 
-| Date    |  Time  |                                     Update |
-|:--------|:------:|-------------------------------------------:|
-| April 5 | 9-10pm | I tried to write abstract, efficient code. |
-|         |        |                                            |
+| Date          |       Time       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Update |
+|:--------------|:----------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| November 29th |  8:45 - 9:15 pm  | I hadn't really made progress on this prior-- and had forgotten the majority of what we had previously gone over in class, so I spent most of my time revising the problem at hand, and thinking of potential solutions. I realized that the nature of the images (i.e the q) were long long strings of one bit (0 or 1) and then another long string of another bit. Hence, I figured the solution would be some way to combine the rows of the same bit into one method of storage. This way the row of 50 zeros wouldn't have to be encoded seperately, it could just be 0 and then 50 stored. |
+| November 29th | 9:15pm - 9:45 pm |                                                                                                                                                                                                                                                                                                                                                                                                                I decided to start tackling how to store( the rows/runs of bits, especially because storing 50/runlength) might take up more space/storage than simply storing the value at hand.  |
 
 
 To add a new row to the table, click into a cell and then hit shift-enter.

@@ -23,7 +23,7 @@
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  *  @author Zach Blick
- *  @author YOUR NAME HERE
+ *  @author Eisha Yadav
  */
 public class BitmapCompressor {
 
@@ -33,8 +33,37 @@ public class BitmapCompressor {
      */
     public static void compress() {
 
-        // TODO: complete compress()
+        // Do nothing if 0 bits present
+        if (BinaryStdIn.isEmpty()) {
+            BinaryStdOut.close();
+            return;
+        }
+        // Read first bit (which is either a 0 or 1)
+        boolean currentBit = BinaryStdIn.readBoolean();
+        int runLength = 1;
 
+        // Check if the bit is the same
+        while (!BinaryStdIn.isEmpty()) {
+            boolean bit = BinaryStdIn.readBoolean();
+            if (bit == currentBit) {
+                // If the same bit, continue the run
+                runLength++;
+
+                // If runLength exceeds 255 reset (1 byte max)
+                if (runLength == 256) {
+                    BinaryStdOut.write(runLength - 1);
+                    runLength = 1;
+                }
+            } else {
+                // Restart run with new bit value (has to be 0 or 1)
+                BinaryStdOut.write(runLength);
+                currentBit = bit;
+                runLength = 1;
+            }
+        }
+
+        // Write final run
+        BinaryStdOut.write(runLength);
         BinaryStdOut.close();
     }
 
@@ -43,9 +72,17 @@ public class BitmapCompressor {
      * and writes the results to standard output.
      */
     public static void expand() {
-
-        // TODO: complete expand()
-
+        // The first run corresponds to a run of 0s.
+        boolean bit = false;
+        while (!BinaryStdIn.isEmpty()) {
+            int runLength = BinaryStdIn.readInt(8);
+            for (int i = 0; i < runLength; i++) {
+                BinaryStdOut.write(bit);
+            }
+            // Alternate bit value for next run
+            // Taking advantage of the 0 or 1 nature.
+            bit = !bit;
+        }
         BinaryStdOut.close();
     }
 
